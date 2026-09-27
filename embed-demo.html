@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Style-Neutral Embed Demo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#ecebea;color:#222;font-family:Arial,sans-serif}.intro{max-width:1000px;margin:0 auto;padding:44px 22px}.intro h1{font-size:42px;margin:0 0 12px}.intro p{max-width:760px;line-height:1.6}.demo{max-width:1000px;margin:0 auto 34px;padding:22px}.label{font:700 12px Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px;color:#666}
+
+/* HOST SITE A — newspaper */
+.host-a{background:#fff;padding:32px;font-family:Georgia,serif;border-top:7px solid #111}
+.host-a .osw-bill__category{text-transform:uppercase;font:700 12px Arial,sans-serif;letter-spacing:.12em}
+.host-a .osw-bill__number{font-size:34px;font-weight:bold;margin-top:10px}
+.host-a .osw-bill__title{font-size:34px;line-height:1.05;margin:4px 0 18px}
+.host-a .osw-bill__summary{font-size:19px;line-height:1.55}
+.host-a .osw-bill__status{border-top:1px solid #bbb;padding-top:14px}
+.host-a a{color:#111;font-weight:bold}
+
+/* HOST SITE B — police association */
+.host-b{background:#102b45;color:#f4f7f9;padding:32px;font-family:Arial,sans-serif;border-radius:14px}
+.host-b .osw-bill__category{color:#9fc2df;text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:bold}
+.host-b .osw-bill__number{font-size:31px;font-weight:900;margin-top:10px}
+.host-b .osw-bill__title{font-size:27px;margin:5px 0 14px}
+.host-b .osw-bill__summary{color:#dce7ef;line-height:1.55}
+.host-b .osw-bill__status{background:#0a2237;padding:14px}
+.host-b a{display:inline-block;background:#f4f7f9;color:#102b45;padding:10px 14px;text-decoration:none;font-weight:bold}
+
+/* HOST SITE C — nonprofit */
+.host-c{background:#fff8ed;padding:38px;font-family:"Trebuchet MS",Arial,sans-serif;border-left:12px solid #d15b3f}
+.host-c .osw-bill__category{color:#9b3f2d;font-weight:bold}
+.host-c .osw-bill__number{font-size:29px;font-weight:900;margin-top:10px}
+.host-c .osw-bill__title{font-size:30px;line-height:1.12;margin:3px 0 16px}
+.host-c .osw-bill__summary{font-size:18px;line-height:1.55}
+.host-c .osw-bill__status{padding:14px 0;border-top:2px dotted #d7bbaa;border-bottom:2px dotted #d7bbaa}
+.host-c a{color:#9b3f2d;font-weight:bold}
+.note{font-size:13px;color:#666;max-width:1000px;margin:0 auto 60px;padding:0 22px}
+</style>
+</head>
+<body>
+<section class="intro">
+<h1>One embed. Three completely different websites.</h1>
+<p>The legislation markup below comes from the same <code>embed.js</code>. The embed contains no stylesheet. Every visible design decision comes from the host page.</p>
+</section>
+
+<div class="demo"><div class="label">Host website A — newspaper / editorial</div>
+<section class="host-a"><div data-osw-legislation data-bill="119-hr-2240"></div></section></div>
+
+<div class="demo"><div class="label">Host website B — police association</div>
+<section class="host-b"><div data-osw-legislation data-bill="119-hr-2240"></div></section></div>
+
+<div class="demo"><div class="label">Host website C — community nonprofit</div>
+<section class="host-c"><div data-osw-legislation data-bill="119-hr-2240"></div></section></div>
+
+<p class="note"><strong>Important:</strong> the CSS on this demonstration page belongs to the three mock host websites. <code>embed.js</code> itself injects no CSS.</p>
+<script src="/embed.js"></script>
+</body>
+</html>
