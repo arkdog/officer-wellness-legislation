@@ -1,0 +1,53 @@
+:root{
+  --ink:#17212b;
+  --muted:#5d6975;
+  --paper:#f6f4ef;
+  --white:#fff;
+  --line:#d7d9dc;
+  --accent:#b44b32;
+  --navy:#24384b;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:auto;padding:0 24px}
+.site-header{background:var(--navy);color:white}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:18px 0}
+.brand{font-weight:800;letter-spacing:.01em;text-decoration:none}
+.nav{display:flex;gap:20px;font-size:.94rem}
+.nav a{text-decoration:none;opacity:.9}
+.hero{padding:74px 0 58px;background:linear-gradient(180deg,var(--navy),#304b64);color:white}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.76rem;opacity:.78}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,6vw,5.8rem);line-height:.96;letter-spacing:-.04em;margin:16px 0 24px;max-width:980px}
+.lede{font-size:clamp(1.08rem,2vw,1.35rem);max-width:780px;color:#e6ebef}
+.source-strip{margin-top:36px;padding:15px 18px;border:1px solid rgba(255,255,255,.25);display:inline-flex;gap:10px;align-items:center;font-size:.94rem}
+.dot{width:9px;height:9px;background:#9ac27a;border-radius:99px}
+.section{padding:64px 0}
+.section h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.04;margin:0 0 12px}
+.section-intro{max-width:760px;color:var(--muted);font-size:1.08rem}
+.bill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.bill-card{background:var(--white);border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;min-height:440px}
+.bill-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;font-weight:800;color:var(--accent)}
+.bill-number{font-size:1.9rem;font-weight:900;margin:14px 0 8px}
+.bill-card h3{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;line-height:1.12;margin:0 0 14px}
+.bill-card p{color:var(--muted)}
+.status{margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
+.status strong{display:block;color:var(--ink)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.button{display:inline-block;background:var(--navy);color:white;text-decoration:none;padding:11px 15px;font-weight:800;font-size:.9rem}
+.button.secondary{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}
+.value-grid h3{margin-bottom:6px}
+.value-grid p{color:var(--muted)}
+.dark{background:#152433;color:white}
+.dark .section-intro{color:#cbd5dd}
+.codebox{background:#0f1821;color:#eaf0f4;padding:22px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem}
+footer{padding:32px 0;background:#0f1821;color:#c9d3da;font-size:.9rem}
+.bill-detail{max-width:850px}
+.bill-detail h1{color:var(--ink);font-size:clamp(2.5rem,6vw,5rem)}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0}
+.prose h2{font-family:Georgia,"Times New Roman",serif;font-size:2rem;margin-top:42px}
+.notice{padding:18px;background:#eef2f4;border-left:4px solid var(--navy);margin:28px 0}
+@media(max-width:850px){.bill-grid,.value-grid{grid-template-columns:1fr}.nav{display:none}.hero{padding-top:52px}.bill-card{min-height:0}}
