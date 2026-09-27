@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legislation | Officer Safety & Wellness Legislative Watch</title>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap topbar"><a class="brand" href="/">Officer Safety & Wellness Legislative Watch</a><nav class="nav"><a href="/">All legislation</a><a href="/embed-demo.html">Embed Demo</a></nav></div></header>
+<main class="section"><div class="wrap bill-detail" id="bill"></div></main>
+<footer><div class="wrap">Official legislative data source: Congress.gov / Library of Congress.</div></footer>
+<script src="/assets/data.js"></script>
+<script>
+const params=new URLSearchParams(location.search);
+const b=window.OSW_BILLS[params.get('bill')] || window.OSW_BILLS['119-s-419'];
+document.title=`${b.number} — ${b.title}`;
+const target=document.getElementById('bill');
+target.innerHTML=`
+<div class="eyebrow">${b.category}</div>
+<h1>${b.number}: ${b.title}</h1>
+<p class="lede" style="color:var(--muted)">${b.summary}</p>
+<div class="meta"><span><strong>Status:</strong> ${b.status}</span><span><strong>Congress:</strong> 119th</span></div>
+<div class="notice"><strong>Official legislative data.</strong> This project is designed to retrieve current bill information through the Congress.gov API. Editorial explanations are presented separately from the government's official record.</div>
+<div class="prose">
+<h2>Why people are watching this</h2><p>${b.why}</p>
+${b.sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}
+<h2>Read the official record</h2>
+<p><a class="button" href="${b.congressUrl}" target="_blank" rel="noopener">Open ${b.number} on Congress.gov</a></p>
+<h2>Make your voice heard</h2>
+<p>Review the official text and current status, then contact your own elected representatives to express your view. This service does not choose a position for the visitor.</p>
+</div>`;
+</script>
+</body>
+</html>
