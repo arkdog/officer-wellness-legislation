@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Officer Safety & Wellness Legislative Watch</title>
+<meta name="description" content="Federal legislation affecting law-enforcement officer safety, wellness, families, training, and agency capacity.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap topbar">
+<a class="brand" href="/">Officer Safety & Wellness Legislative Watch</a>
+<nav class="nav"><a href="#legislation">Legislation</a><a href="#embed">For Organizations</a><a href="/embed-demo.html">Embed Demo</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+<div class="eyebrow">A public legislative information service</div>
+<h1>Federal legislation affecting the people behind the badge.</h1>
+<p class="lede">Plain-English explanations of legislation involving officer safety, mental health, families, training, staffing, and agency capacity — with official federal data behind the status information.</p>
+<div class="source-strip"><span class="dot"></span><span>Designed to use the official Congress.gov API maintained by the Library of Congress</span></div>
+</div></section>
+
+<section class="section" id="legislation"><div class="wrap">
+<div class="eyebrow">Featured legislation</div>
+<h2>Three measures worth understanding.</h2>
+<p class="section-intro">This prototype shows how federal legislation can be translated into useful public information without requiring visitors to decipher congressional terminology.</p>
+<div class="bill-grid" id="bill-grid"></div>
+</div></section>
+
+<section class="section dark" id="embed"><div class="wrap">
+<div class="eyebrow">For organizations</div>
+<h2>Put this information on your own website.</h2>
+<p class="section-intro">The embed delivers current legislation and semantic HTML. It does not deliver a stylesheet. Your website remains in control of fonts, colors, spacing, borders, and layout.</p>
+<div class="value-grid">
+<div><h3>One source</h3><p>Maintain the legislative information centrally rather than asking every organization to research and rewrite the same bill.</p></div>
+<div><h3>Your design</h3><p>The embed inherits the visual system of the host website instead of arriving as a foreign-looking widget.</p></div>
+<div><h3>Official data</h3><p>Congress.gov data can be retrieved server-side while plain-English editorial explanations remain clearly identified.</p></div>
+</div>
+<h3 style="margin-top:42px">A complete embed can be this small:</h3>
+<pre class="codebox">&lt;div data-osw-legislation data-bill="119-s-419"&gt;&lt;/div&gt;
+&lt;script src="https://YOUR-SITE.netlify.app/embed.js" defer&gt;&lt;/script&gt;</pre>
+<p><a class="button" href="/embed-demo.html">See the same embed in three different websites</a></p>
+</div></section>
+</main>
+
+<footer><div class="wrap">Prototype • Legislative facts should be verified against the current official congressional record before publication.</div></footer>
+<script src="/assets/data.js"></script>
+<script>
+const grid=document.getElementById('bill-grid');
+Object.values(window.OSW_BILLS).forEach(b=>{
+ const a=document.createElement('article');
+ a.className='bill-card';
+ a.innerHTML=`<div class="bill-kicker">${b.category}</div><div class="bill-number">${b.number}</div><h3>${b.title}</h3><p>${b.summary}</p><div class="status"><strong>Current status</strong>${b.status}<div class="actions"><a class="button" href="/bill.html?bill=${b.id}">Understand the bill</a><a class="button secondary" href="${b.congressUrl}" target="_blank" rel="noopener">Official record</a></div></div>`;
+ grid.appendChild(a);
+});
+</script>
+</body>
+</html>
