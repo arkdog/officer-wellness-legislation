@@ -50,4 +50,8 @@ footer{padding:32px 0;background:#0f1821;color:#c9d3da;font-size:.9rem}
 .meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0}
 .prose h2{font-family:Georgia,"Times New Roman",serif;font-size:2rem;margin-top:42px}
 .notice{padding:18px;background:#eef2f4;border-left:4px solid var(--navy);margin:28px 0}
+.osw-official{margin:14px 0;padding:12px 14px;background:#eef6ef;border-left:4px solid #4a7c59;font-size:.86rem}
+.osw-official__tag{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:#33593d}
+.osw-official__action{margin-top:4px;color:var(--ink)}
+.osw-official__meta{margin-top:4px;color:var(--muted)}
 @media(max-width:850px){.bill-grid,.value-grid{grid-template-columns:1fr}.nav{display:none}.hero{padding-top:52px}.bill-card{min-height:0}}
