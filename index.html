@@ -45,13 +45,24 @@
 
 <footer><div class="wrap">Prototype • Legislative facts should be verified against the current official congressional record before publication.</div></footer>
 <script src="/assets/data.js"></script>
+<script src="/assets/live-bill.js"></script>
 <script>
 const grid=document.getElementById('bill-grid');
 Object.values(window.OSW_BILLS).forEach(b=>{
  const a=document.createElement('article');
  a.className='bill-card';
- a.innerHTML=`<div class="bill-kicker">${b.category}</div><div class="bill-number">${b.number}</div><h3>${b.title}</h3><p>${b.summary}</p><div class="status"><strong>Current status</strong>${b.status}<div class="actions"><a class="button" href="/bill.html?bill=${b.id}">Understand the bill</a><a class="button secondary" href="${b.congressUrl}" target="_blank" rel="noopener">Official record</a></div></div>`;
+ a.innerHTML=`<div class="bill-kicker">${b.category}</div><div class="bill-number" data-field="number">${b.number}</div><h3 data-field="title">${b.title}</h3><p>${b.summary}</p><div class="official-data-slot" data-official-for="${b.id}"></div><div class="status"><strong>Current status</strong>${b.status}<div class="actions"><a class="button" href="/bill.html?bill=${b.id}">Understand the bill</a><a class="button secondary" href="${b.congressUrl}" target="_blank" rel="noopener">Official record</a></div></div>`;
  grid.appendChild(a);
+
+ if (window.OSW_LIVE) {
+   window.OSW_LIVE.fetchLiveBill(b.id).then(official=>{
+     if (!official) return;
+     const slot=a.querySelector(`[data-official-for="${b.id}"]`);
+     if (slot) slot.innerHTML = window.OSW_LIVE.officialBadgeHTML(official);
+     if (official.title) a.querySelector('[data-field="title"]').textContent = official.title;
+     if (official.number) a.querySelector('[data-field="number"]').textContent = official.number;
+   });
+ }
 });
 </script>
 </body>
