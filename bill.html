@@ -10,6 +10,7 @@
 <main class="section"><div class="wrap bill-detail" id="bill"></div></main>
 <footer><div class="wrap">Official legislative data source: Congress.gov / Library of Congress.</div></footer>
 <script src="/assets/data.js"></script>
+<script src="/assets/live-bill.js"></script>
 <script>
 const params=new URLSearchParams(location.search);
 const b=window.OSW_BILLS[params.get('bill')] || window.OSW_BILLS['119-s-419'];
@@ -17,18 +18,35 @@ document.title=`${b.number} — ${b.title}`;
 const target=document.getElementById('bill');
 target.innerHTML=`
 <div class="eyebrow">${b.category}</div>
-<h1>${b.number}: ${b.title}</h1>
+<h1 data-field="title">${b.number}: ${b.title}</h1>
 <p class="lede" style="color:var(--muted)">${b.summary}</p>
 <div class="meta"><span><strong>Status:</strong> ${b.status}</span><span><strong>Congress:</strong> 119th</span></div>
+<div class="official-data-slot" data-official-for="${b.id}"></div>
 <div class="notice"><strong>Official legislative data.</strong> This project is designed to retrieve current bill information through the Congress.gov API. Editorial explanations are presented separately from the government's official record.</div>
 <div class="prose">
 <h2>Why people are watching this</h2><p>${b.why}</p>
 ${b.sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}
 <h2>Read the official record</h2>
-<p><a class="button" href="${b.congressUrl}" target="_blank" rel="noopener">Open ${b.number} on Congress.gov</a></p>
+<p><a class="button" href="${b.congressUrl}" target="_blank" rel="noopener" data-field="congressUrl">Open ${b.number} on Congress.gov</a></p>
 <h2>Make your voice heard</h2>
 <p>Review the official text and current status, then contact your own elected representatives to express your view. This service does not choose a position for the visitor.</p>
 </div>`;
+
+if (window.OSW_LIVE) {
+  window.OSW_LIVE.fetchLiveBill(b.id).then(official=>{
+    if (!official) return;
+    const slot=target.querySelector(`[data-official-for="${b.id}"]`);
+    if (slot) slot.innerHTML = window.OSW_LIVE.officialBadgeHTML(official);
+    if (official.title) {
+      target.querySelector('[data-field="title"]').textContent = `${official.number || b.number}: ${official.title}`;
+      document.title = `${official.number || b.number} — ${official.title}`;
+    }
+    if (official.congressUrl) {
+      const link = target.querySelector('[data-field="congressUrl"]');
+      if (link) link.href = official.congressUrl;
+    }
+  });
+}
 </script>
 </body>
 </html>
